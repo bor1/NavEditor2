@@ -1,0 +1,4 @@
+<Files ~ .akt_key_tmp>
+deny from all
+</Files>
+

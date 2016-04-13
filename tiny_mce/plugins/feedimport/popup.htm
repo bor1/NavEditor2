@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>Feed einf&uuml;gen</title>
+	<script type="text/javascript" src="../../tiny_mce_popup.js"></script>
+	<script type="text/javascript" src="js/popup.js"></script>
+	<script type="text/javascript" src="../../utils/mctabs.js"></script>
+	<script type="text/javascript" src="../../utils/form_utils.js"></script>
+<style type="text/css">
+
+.panel_wrapper div.current {height:120px; width:200;}
+.feedid {vertical-align:middle;}
+.numberoffeeds {vertical-align:middle;}
+.numberofletters {vertical-align:middle;}
+</style>
+
+</head>
+<body>
+<form onsubmit="feedimportDialog.update();return false;" action="#">
+	<div class="panel_wrapper">
+		<div id="general_panel" class="panel current">
+			<table border="0" cellpadding="4" cellspacing="0">
+                    <tr>
+                        <td><label for="feedid">Feed ID</label></td>
+                        <td class="nowrap">
+                            <!--<input id="feedid" name="feedid" type="text" value="" class="mceFocus" />   <option value="1">1</option>-->
+							<select id="feedid" name="feedid">
+							<script type="text/javascript">
+								var feedsnum = tinyMCEPopup.getWindowArg('feedsnum');
+								for(i=0; i<feedsnum.feeds.length; i++){
+									document.write('<option value="'+ (i+1) +'">Feed-'+feedsnum.feeds[i].id+ ': '+feedsnum.feeds[i].title+'</option>\n');
+								}
+							</script>
+							</select>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="numberoffeeds">Optional: Maximale Anzahl der Artikel</label></td>
+                        <td>
+							<input id="numberoffeeds" name="numberoffeeds" type="text" value="" class="mceFocus" />
+						</td>
+                    </tr>
+                    <tr>
+                        <td><label for="numberofletters">Optional: Maximale Anzahl der Zeichen f&uuml;r den Textteil</label></td>
+                        <td>
+							<input id="numberofletters" name="numberofletters" type="text" value="" class="mceFocus" />
+						</td>
+                    </tr>
+            </table>
+		</div>
+	</div>
+
+	<div class="mceActionPanel">
+		<input type="submit" id="insert" name="insert" value="OK" />
+		<input type="button" id="cancel" name="cancel" value="Cancel" onclick="tinyMCEPopup.close();" />
+	</div>
+</form>
+</body>
+</html>

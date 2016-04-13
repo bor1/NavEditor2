@@ -1,0 +1,3 @@
+<Files ~ .hteditoruser>
+deny from all
+</Files>

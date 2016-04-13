@@ -1,0 +1,279 @@
+Version 2.13.0306
+* Seitenvorlage angepasst: Umstellung/Aktualisierung auf HTML5, sowie weitere
+  Anpassungen der Seitenstruktur.
+
+Version 2.13.0219
+* Sidebar in Allgemeine Bereiche aufgenommen. Die Sidebar wird fuer neue HTML5-Designs
+  verwendet und ist optional. 
+
+
+Version 2.13.0131
+* Korrektur bei der Zuweisung von Benutzerrollen bei Updates von Altversionen,
+  bei denen Redakteure noch keine Rollen hatten.
+* Aktualisierte Hilfeseite
+* Neue Bildvorschauanzeige-Funktionen fuer den Bereiche Bilder&Dateien. 
+  (Beta, Noch in Arbeit)
+
+
+Version 2.12.0718
+* Neue gestaltete und verbesserte Benutzerverwaltung:
+  - Benutzergruppen (Benutzer, Redakteur und Administrator)
+      Benutzer : Darf nur Inhaltsseiten aendern
+      Redakteur: Darf Seiten aendern, Dateien hochladen und Bereiche
+                 anpassen.
+      Administrator: Darf alles.
+  - Schreibrechte fuer Benutzer und Redakteure gezielt auf Verzeichnisse und
+    Dateien setzbar.
+  - Eingabe von Profildaten fuer einzelne Benutzer: Darunter Mailadresse.
+  - Passwort zuruecksetzen fuer normale Benutzer (Wenn diese eine gueltige
+    E-Mailadresse im Profil haben) 
+* Fehlerbehebung bei dem Upload von Dateien mit Umlauten und Sonderzeichen.
+  Diese Zeichen werden automatisch konvertiert.
+
+
+Version 2.12.0312
+* Kleinere Bugs beim Dateiexplorer gelöst. Fehlendes Icon für neue Dateien
+  ergänzt
+* Design-Wechsel-Funktion erkennt nun, wenn -z.B. aufgrund einer veralteten 
+  CSS-Vorlage- die Optionendatei layout.css nicht vorhanden und nutzbar
+  ist.
+* Bearbeitung von "Allgemeinen Bereichen" ist nun provisorisch eingeschraenkt
+  auf den Hauptwebmaster. Problem durch Fehlbedienung bei Webauftritten
+  mit vielen Webmastern, bei denen einige unerfahrene Autoren hier
+  moeglicherweise Fehler machen, soll somit eingeschraenkt werden.
+  In Zukunft ist geplant dies Optional abhaengig von Berechtigungsregeln
+  pro User zu machen.
+
+Version 2.12.0201
+* Neue Release-Version; Enthält Korrekturen und Ergaenzungen der Testversionen
+  seit der Version 2.12.0114:
+     a) Bessere Erkennung von Inhalten auch bei fehlerhaft strukturierten
+        Vorlagen
+     b) Anlegen neuer leerer Text- Config und Passwortdateien fuer den
+        Admin im Dateiexplorer
+     c) Optische Anpassung bei der Seitenbearbeitung und Entfernung
+        inzwischen veralteter Funktionen ("Quicklinks", "Direktlinks").
+     
+
+Version 2.12.0130
+* Fehlerredundanz eingebaut fuer den Fall von Inhatsbereichen, bei denen
+  die Start- und Endmarker des Inhalts nicht korrekt gesetzt sind.
+
+Version 2.12.0127
+* Optische Korrekturen bei der Seitenbearbeitung
+* Bessere Fehlerredundanz bei fehlerhaften Seitentiteln
+
+Version 2.12.0118
+* Neue Funktion beim Datei-Explorer: Anlegen neuer leerer Text- Config und Passwortdateien
+* Anpassung verschiedener Bedienicons
+* Kleinere Fehlerkorrekturen
+
+Version 2.12.0114
+* Neue Stabile Version mit allen Änderungen und Neuerungen aus den Testversionen 
+  seit dem  7. September 2011. Wesentliche Änderungen sind:
+  a) Neuer Benutzeroberfläche und Menustruktur 
+  b) Aktuellere Version der TinyMCE-Editors
+  c) Neuer Dateiexplorer
+  d) verbessertes Sitzungshandling und Passwort-Vergessen-Funktionen 
+
+Version 2.12.0113
+* Aufbereitung der Update-Funktion
+* Korrektur eines Javascript-Fehlers bei der Auswahl von Backup-Versionen
+
+Version 2.12.0111
+* Neue Version des Dateibrowsers; Kleine Tippfehler korrigiert
+* Jahreswechsel durch neuen Releasenamen deutlich gemacht: gamma -> delta
+* Alte Templateanweisungen aus Editor-Code entfernt
+* Verständliche Datumsangabe bei der Auswahlliste für Backup-Dateien
+* Anpassung der Sessionbehandlung bei bereits angemeldeten Usern
+
+Version 2.11.1213
+* Verbesserung des Sitzungshandlings; Behebung des Problems mit fehlerhaften Logins nach 
+  (stundenlangen) idlen des NavEditors in einem unbenutzten Browser
+
+Version 2.11.1208
+* Generisches Navigationsmenu
+* Inhaltsparsing und Textsuche nun generisch. NavEditor kann somit auch
+  fuer fremde HTML-Seiten/Strukturen genutzt werden die nicht auf das HTML des Webbaukastens beruhen!
+
+Version 2.11.1201
+* Korrektur beim Update aller Websites
+* Neue Konfigurationswerte eingebaut zur optionalen Ausgabe von Reports bei der Aendeurng von Kopfteilen vieler Files
+* Bei der Bearbeitung der Zusatzinfo und der Kurzinfo werden fehlerhafte Bearbeitungen der Anwender die das Loeschen
+  der Bereichsmarken zur Folge hat, verhindert.
+* Fuer die Bearbeitung der Bereiche Zielgruppenmenu, Fusstext und Inhaltsinfo wurden die Hilfetexte
+  aktualisiert um den Zweck dieser Bereiche deutlich zu machen und um Tipps bei einer Fehlbedienung (unabsichtlichen
+  Loeschen von dynamischen Elementen) zu geben.
+* Der neu gebaute Bereich Seiten bearbeiten / Bilder & Dateien befindet sich noch in der Testphase.
+  Folgende Hinweise gelten fuer diesen Bereich: 
+  - Bei dem Hochladen von Bildern kommt es derzeit zu einem Fehler bei der automatischen Erstellung einer Thumbnail.
+  - Es ist derzeit aus diesem Bereich nicht moeglich, neue Unterverzeichnisse unterhalb des Hauptverzeichnis
+    zu erstellen. (Es ist aber moeglich unter vorhandenen Verzeichnissen neue Unterverzeichnisse zu erstellen).
+    Neue Unterverzeichnisse unter dem Hauptverzeichnis koennen daher momentan nur ueber den Menupunkt
+    "Seiten bearbeiten" /  "Seite und Navigation" heraus erstellt werden.
+
+Version 2.11.1111
+* Neues jQuery-Interface zum Upload von Dateien
+* Behebung des Problems fehlerhafter Logins bei bestehendem unbenutzten Browser-Tab/Fenster 
+
+Version 2.11.1101
+* Weitere Verbesserung bei dem Setzen des Logos: Bei einem Kopfteil der nichts ausser einem Logo enthalten soll (also auch keinen Namen!), wird auch kein Platzhalter verwendet.
+
+Version 2.11.1014
+* Korrektur der Default-Werte des neuen TinyMCE
+* Korrektur bei der Setzung des Titels und des Namens von Webseiten
+* Verbesserung des Fehlerverhaltens bei der Loginseite
+* Kompletter Neubau der Lasche Bilder und Dateien - use with care!
+* MaxFilesize fuer Uploads auf 50 MB angehoben; Momentan fest codiert, spaeter als
+  Konfigurationsvariable
+
+Version 2.11.0917
+* TinyMCE auf Version 3.4.5 aktualisiert;
+  Damit ist die Nutzung des Internet Explorers wieder moeglich.
+* Eingebundene Google Maps wurden entfernt aufgrund von API-Key-Problemen
+
+Version 2.11.0907
+* Korrektur bei der Bearbeitung neuer Seiten: Kopfteil (Logo-Bereich) wird nicht mehr
+  aus der Template generiert sondern allein aus den Daten der globalen Website-Konfiguration.
+  Damit sollte das Problem mit Default-Angaben behoben sein.
+* Verbesserungen, damit bei einem nicht aktivierten Webauftritt auch Hilfetexte abgerufen
+  werden koennen.
+
+Version 2.11.0727
+* Aktivierung verbessert bei Erstbenutzung
+* Passworte werden als MD5-Hash gespeichert
+* Auswahl der Varianten bei Designs unter hauptdesignauswahl verschoben
+
+Version 2.11.0706
+* Funktion fuer das Zuruecksetzen und Zusenden von Benutzerpassworten fuer den
+  Editor eingebaut
+* Sicherheitsfunktion gegen Passwort-Hacking-Attemps eingebaut: "Teergrube" gegenueber
+  mehreren fehlerhaften Loginversuchen
+* Umbauten bei der verwaltung von zentralen Parametern und Konstanten fuer die Website
+
+  - Alle Website-betreffenden Daten, inklusive dem Logo aus dem Kopfbereich,
+    werden nunmehr in einer Konfigurationsdatei website.conf gespeichert
+    und nicht mehr aus einem Template ausgelesen.
+    Damit wurde auch die Funktion zum Aenderung der Kontaktseite mit
+    geaendert. Der gemeldete Fehler, dass die Informationen des Logos und des Titels
+    der Website bei Neuanlegen von Dokumenten verfaellt, sollte damit behoben werden.
+  - Neue Konfigurationsdatei variables.conf   erlaubt die Verwendung eigener
+    fest definierter Variablen die im Editor verwendet werden koennen.
+
+* Einbau von Platzhaltern im Seiteneditor fuer dynamische Bereiche von Feedimport und UnivIS-
+  Import
+ 
+Diese Version ist eine Testversion!  Der Einsatz erfolgt auf eigene Gefahr.
+Wir empfehlen vor dem Einsatz eine Sicherung der Daten vorzunehmen oder diese
+Testversion nur auf einer eigenen Test-Website zu pruefen.
+Aufgrund der umfangreichen Aenderungen bitten wir um Feedback und unverzuegliche
+Meldungen wenn Fehler oder seltsame und unerwartete Effekte auftreten.
+Nur Ihr Feedback hilft uns, Fehler zu finden die wir selbst uebersehen haben und den
+Editor besser zu machen.
+
+
+Version 2.11.0325
+* Fehler bei der Erstellung von Dateinamen mit exotischen Seitentiteln behoben.
+  Dateinamen werden nun generell nach folgenden Regelsatz erstellt:
+
+   1. Leerzeichen werden auf "-" ersetzt
+   2. Runde Klammern, nebst Inhalten werden geloe�scht
+   3. Die Umlautte und das SZ werden den ersetzt zu ae, oe, ue und ss
+   4. Alles was dann noch �uebrig ist und nicht in der Menge [a-z0-9] und - ist, wird entfernt
+   5. Mehrere Vorkommen von "-" werden durch ein "-" ersetzt
+   6. "-" am Anfang und am Ende des Dateinamens (ohne Suffix) werden entfernt.
+
+  Die Regel in Punkt 6. wurde durch das CGI-Skript, welches die Navigation auf dem Server
+  dynamisch aufbaut auch noch nicht unterstuetzt. Daher sollte das Perlmodul Navigation.pm
+  aktuallisiert werden.
+  Um die aktuellen CGI-Skripten zur Navigation zu bekommen, kopieren Sie die Inhalte des Muster-
+  Verzeichnisses
+     /proj/websource/docs/muster/www.defaultwebauftritt.uni-erlangen.de/cgi-bin/navigation/
+  in das gleichnamige CGI-Verzeichnis in ihrem Webauftritt. 
+
+
+Version 2.11.0321
+* Fehler bei dem Verschieben von Seiten behoben
+* Darstellungsfehler fuer Unterebenen in der Navigation behoben
+* Version wird zur Stable definiert
+
+Version 2.11.0311
+* Bug mit der Speicherung der technischen Navigation behoben
+* Hilfeseite um Links in das Forum und die FAQs ergaenzt
+* "Seite verschieben" im Editor temporaer disabled (auskommentiert), damit Benutzer nicht verwirrt werden und wir Zeit haben, das Problem zu loesen.
+* Neue Seiten zur Lizenz und der Uebersicht der Projektbeteiligten eingebaut
+* Neuer Titel: beta wird zu gamma
+
+Version 2.11.0127
+* "Nach oben"-Links um Absatzblock ergaenzt
+* Diverse Tippfehler korrigiert und Bezeichnungen verbessert
+* Fehler in der Nutzung der Konfigurationsangabe zur Dashboard Feed-URL korrigiert
+* Sicherung von vorherigen Konfigurationsdateien
+* Backup-Files mit Konfigurationsdateien in vkdaten/ mit der Endung ~, .bak, .bk werden nicht mehr bei der Auswahl von Konfigurationseinstellungen angezeigt
+* Auswahl der Seitenvorlage fuer Erstellung neuer Seiten entfernt, da dies zuk�nftig durch Befehlsbuttons im Editor erledigt wird
+
+Version 2.11.01.21
+* Gemeldete Fehler aus Stable Version 2.10.0903 behoben
+* Gemeldete Fehler aus vorherigen Testversion 2.10.1211 behoben
+* Neue Funktion zur Anzeige von Hilfetexten eingebaut
+* Erste Basisfunktionalitaten zur Erstellung von Zugriffsschutz-Dateien (.htaccess) eingebaut
+
+Version 2.10.12.11
+* Geleichzeitiger Zugriff auf dem Navi-Baum moeglich. Die Struktur wird automatisch aktualisieren.
+* Schutz von Verzeichnisse durch Begrenzung der Benutzerkonten und IP-Adresse/Domainnamen.
+* Aktuelle Version des TinyMCE-Editors.
+* Hilfe-Infomationen auf jeder Seite.
+* Viele kleine Bugfixes sowie Verbesserungen.
+
+Version 2.10.0901
+* Wieder eine neue stabile Version
+* Neue Struktur der Menueleiste
+* Ein Dashboard mit aktuelle Meldungen aus WebTeam
+* Neue Version vom Seite-Editor
+* Bugfixes
+
+Version 2.10.0824
+* Neue Struktur der Menueleiste
+* Ein Dashboard mit aktuelle Meldungen aus WebTeam
+* Seite-Design fuer einzele Seite waehlbar
+* Neue Version vom Seite-Editor
+* Bugfixes
+
+Version 2.10.0623
+* Einfuegen von Flaggen (kleinen Bildern) im TechMenue (neben Kontakt, Impressum, Suche usw.) moeglich 
+* Mitarbeiter Zusatzinfo bearbeiten erganzt, jetzt mit Inhalsbloecke
+* Fehler beim Designwechseln behoben
+* Bugfixes
+
+Version 2.10.0615
+* Mitarbeiter Zusatzinfo bearbeiten erganzt, jetzt mit Inhalsbloecke
+* Einfuegen von Flaggen (kleinen Bildern) im TechMenue (neben Kontakt, Impressum, Suche usw.) moeglich 
+* Fehler beim Designwechseln behoben
+* Bugfixes
+
+Version 2.10.0611
+* Mitarbeiter Zusatzinfo bearbeiten erganzt, jetzt mit Inhaltsbloecke
+* Einfuegen von Flaggen (kleinen Bildern) im TechMenue (neben Kontakt, Impressum, Suche usw.) moeglich 
+* Fehler beim Designwechseln behoben
+
+Version 2.10.0511
+* Mitarbeiter Zusatzinfo bearbeiten
+* Mitarneiter-Foto hochladen
+* Dateien, die groesser als 1MB sind, koennen auch hochgeladen werden
+* Session-Ablauf verbessert
+* Bugfixes
+
+Version 2.10.0413
+* Mitarbeiter Zusatzinfo.
+* Erweiterte Zugriffsrechte fuer Benutzer
+* Bugfixes!
+
+Version 2.10.0309
+* Eine neue Stabilversion
+* Wichtige Sicherheits-Fixes
+
+Version 2.10.0128
+* Kontaktseite-Erstellen wieder funktioniert
+* Logo-Bearbeiten: jetzt mit Website-Titel
+* Andere Bugfixes
+* Diese ist eine Release-Candidate Version, die nach einigen Tests zur stabilen Version wechseln wird.

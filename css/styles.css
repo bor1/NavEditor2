@@ -1,0 +1,711 @@
+* {
+	padding: 0;
+	margin: 0;
+}
+
+body {
+	background-color: #fff;
+	color: #000;
+	font-family: "Trebuchet MS", Tahoma, Verdana, sans-serif;
+	font-size: small;
+}
+
+fieldset {
+	border: 1px solid #ccc;
+	border-right: none;
+	border-bottom: none;
+	border-left: none;
+	padding: 0.25em 0 0 0;
+	margin-bottom: 1em;
+}
+fieldset legend {
+	color: #666;
+	font-style: italic;
+}
+
+p, hr {
+	margin: 0.5em 0;
+}
+
+
+#txtTitle {    
+    background-color: #FFFFFF;
+    border-color: #CCCCCC;
+    font-size: 1.7em;
+    line-height: 100%;
+    outline: medium none;
+    padding: 3px 8px;
+    width: 95%;
+}
+#divPageOptions {
+  background-color: #E5EFFD;
+  border-color: #ABC6DD;
+  border-style: solid;
+    border-width: 1px;
+    display: none;
+    margin:  0 0 10px 0;
+    position: relative;  
+    width: 95%;
+    padding: 3px 8px;
+}
+#divPageOptions p label {
+    clear: left;
+    float: left;
+    width: 20em;
+}
+#divPageOptions p.reihe label {
+    float: none;
+    clear: left;
+    
+}
+#ne-editor-content {
+    width: 97%;
+    margin: 0; 
+     font-size: 1.7em;
+    line-height: 100%;
+}
+#ne-editor-content {
+    
+}
+.ne-editor-content-textarea {
+    width: 100%;      
+    background-color: #fff;
+	padding: 1px;
+	font-family: "Trebuchet MS", Tahoma, Verdana, sans-serif;	
+	border: 1px solid #369;    
+}
+.ne-editor-content-textarea:focus {
+    background-color: #f0f8ff;  
+}
+
+.textBox {
+	background-color: #fff;
+	padding: 1px;
+	font-family: "Trebuchet MS", Tahoma, Verdana, sans-serif;	
+	border: 1px solid #369;       
+}
+.textBox:focus {
+	background-color: #f0f8ff;
+}
+ 
+
+.button {
+	font-family: "Trebuchet MS", Tahoma, Verdana, sans-serif;
+	font-size: small;
+}
+
+div.z {
+	clear: both;
+}
+
+table.versionsinfo {      
+    border-collapse: collapse;
+    margin: 0 0 20px 20px;
+}
+table.versionsinfo  tr th {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border: 1px solid #879EB0;
+    color: #3F3F3F;
+    padding: 6px 6px 6px 12px;
+}
+table.versionsinfo  tr td {
+    border: 1px solid #879EB0;
+    color: #2F2F2F;
+    padding: 6px 6px 6px 12px;
+    text-align: left;
+}   
+table.versionsinfo tr td {
+    background-color: #F2F5F7;
+}
+table.versionsinfo tr:nth-child(2n+1) td {
+    background-color: #E9EFF2;
+}
+
+
+#header {
+	padding: 0.5em;
+	color: #fff;
+	background: #004b88 url(hdr_bg.png) repeat-x 0 0;
+	margin: 0;
+}
+#header sup {
+	color: #dcdcdc;
+	font-weight: normal;
+	font-variant: small-caps;
+}
+
+#dirTreePanel {
+	padding: 0.5em 0 0 0.5em;
+	margin: 0 0 0.5em 0;
+	float: left;
+	width: 25%;
+}
+#dirTreePanel h4 {
+	color: #999;
+	margin: 0.5em 0 0.25em 0;
+}
+
+#contentPanel {
+	padding: 0 0.5em 0 0;
+	margin: 0 0 0.5em 0;
+	float: right;
+	width: 72.5%;
+}
+#contentPanel1 {
+	padding: 0 0.5em 0.5em 0.5em;
+	margin: 0 0 0.5em 0;
+}
+
+#dirTreePanel ul {
+/*	margin: 0 auto !important;*/
+	margin: 0 0 0 1em;
+}
+#dirTreePanel ul li {
+	cursor: pointer;
+/*	margin: 0 !important;*/
+	margin: 0 0 0 1em;
+	list-style-type: none;
+}
+#dirTreePanel ul li span {
+	padding: 1px;
+}
+#dirTreePanel ul li span:hover {
+	color: #00c;
+	font-weight: bold;
+}
+#dirTreePanel li em.treeKey {
+	font-size: 10px;
+	color: #999;
+	margin-right: 0.5em;
+}
+#dirTreePanel li b.tg {
+	font-size: 105%;
+	font-family: "Courier New", Courier, monospace;
+	font-weight: bold;
+}
+
+#pnlNormal li {
+	color: #ccc;
+}
+
+#debug {
+	color: #aaa;
+	margin: 0.5em 0 0 0;
+	font-size: 90%;
+}
+
+.currentSelected {
+	font-weight: bold;
+	color: #00c;
+	background-color: #f0f8ff;
+	border: 1px solid #b0c4de;
+}
+
+#footer {
+	clear: both;
+	padding: 0.5em 0;
+	color: #333;
+	text-align: center;
+	border-top: 1px dotted #4682b4;
+	margin: 0.5em 0 0 0;
+	font-size: 90%;
+}
+
+#frmEdit label {
+	color: #666;
+	font-weight: bold;
+}
+
+/* Navigation tabs */
+#navBar {
+	background-color: #004b88;
+	clear: both;
+}
+#navBar .menu_level2 {
+	display: none;
+	margin: 0;
+	padding: 0.5em 0;
+	background-color: #dcdcdc;
+}
+#navBar .menu_level2 li {
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+	display: inline;
+}
+#navBar .menu_level2 li a {
+	color: #000;
+	text-decoration: none;
+	padding: 0.5em;
+	margin: 0 0.75em 0 0;
+}
+#navBar .menu_level2 li a.extern {
+	padding: 0 0 0 12px;
+	background: url("../css/externlink.gif") no-repeat scroll 0 50% transparent;
+	color: #48546A;
+}
+#navBar .menu_level2 li a:hover {
+	text-decoration: underline;
+}
+
+
+#userList li {
+	list-style: none;
+}
+
+#confList {
+	float: left;
+	width: 19%;
+	padding: 0.5em;
+	margin: 0 0 0.5em 0;
+}
+#confList li {
+	padding: 0.5em 0;
+	margin: 0 0 0 1em;
+	list-style-type: none;
+}
+
+#contentPanel2 {
+	float: right;
+	width: 77.5%;
+	padding: 0 0.5em;
+	margin: 0 0 0.5em 0;
+}
+
+#contentPanel2 p label {
+	display: inline-block;
+	width: 8em;
+}
+
+#container p label {
+	width: 20em;
+}
+
+#newFM {	
+
+}
+
+#newFM #folderTreeWrapper {
+	width: 30%;
+	float: left;
+}
+#newFM #filePanelWrapper {
+   	float: right;
+  	width: 60%;
+}
+#newFM #fileListWrapper {
+}
+#newFM #fileInfoDisplay {
+    	width: 80%;
+}
+#newFM #folderOperArea {
+	margin: 0 0 0.5em 0;
+}
+#newFM #folderTreePanel {
+	overflow: scroll;
+}
+#newFM #folderTreePanel ul {
+	margin: 0 0 0 0.25em;
+}
+#newFM #folderTreePanel li {
+	margin: 1px 0 1px 0.75em;
+	/*padding: 0 0 0 1px;*/
+	list-style-type: none;
+}
+#newFM #folderTreePanel li a.on {
+	background-color: #00c;
+	color: #fff;
+}
+#newFM #folderTreePanel li b.tg1 {
+	cursor: pointer;
+	font-size: 105%;
+}
+
+#newFM #fileListPanel a:link {
+	text-decoration: none;
+}
+#newFM #fileListPanel a:hover {
+	text-decoration: underline;
+}
+
+#newFM #fileListPanel table {
+	width: 100%;
+}
+#newFM #fileListPanel th {
+	background-color: #f0f8ff;
+	padding: 2px;
+	border-bottom: 1px solid #369;
+	text-align: left;
+}
+#newFM #fileListPanel td {
+	padding: 2px;
+}
+#newFM #fileListPanel td img {
+	vertical-align: text-top;
+}
+
+#newFM #ajaxUploadArea {
+	margin: 0 0 0.5em 0;
+	clear: both;
+	padding: 2px 0 0 0;
+}
+
+#newFM #fileInfoDisplay #fileInfoPrompt {
+	color: #00467f;
+	font-weight: bold;
+	margin: 10px;
+	border: 1px solid #dcdcdc;
+	padding: 0.3em;;
+}
+#newFM #fileInfoDisplay #fileInfoPrompt li {
+	margin-left: 2em;
+}
+#newFM #fileInfoDisplay input[type=text] {
+	width:70%;
+}
+#newFM #fileInfoDisplay input[type=button] {
+	width:12em;
+}
+#newFM #fileInfoDisplay table {
+	width: 100%;
+	background-color: #f0f8ff;
+}
+#newFM #fileInfoDisplay table th {
+	text-align: right;
+	width: 25%;
+	background-color: #fff;
+	padding: 2px;
+}
+#newFM #fileInfoDisplay table td {
+	background-color: #fff;
+	padding: 2px;
+}
+#newFM #fileInfoDisplay #thumbImage {
+	text-align: left;
+	margin-left: 20%;
+}
+
+#textbereich   {
+	border: solid 1px #DCDCDC;
+	padding: 0.5em 1em 1em 0.5em;
+	margin: 10px;
+	max-width: 99%;
+}
+#textbereich h2 {
+	margin-top: 1em;
+        margin-bottom: 1em;
+	color: #00467F;
+}
+#textbereich ul,  #textbereich dl {
+	margin-left: 2em;
+}
+#textbereich ul  li, #textbereich dl dd  {
+	margin-left: 2em;
+}
+#textbereich ul  li ul li, #textbereich dl dd dl dd  {
+	margin-left: 1em;
+}
+
+#textbereich a.extern {
+	padding: 0 0 0 12px;
+	background: url("../css/externlink.gif") no-repeat scroll 0 50% transparent;
+	color: #48546A;
+}
+
+#returnToSite {
+	display: block;
+	position: absolute;
+	top: 0;
+	right: 0;
+	color: #fff;
+	padding: 1px 1px 0 0;
+}
+
+#divPermission, #divPermission1 {
+	height: 13em;
+	display: inline-block;
+	overflow: scroll;
+}
+
+/* Dashboard */
+#dashbrd_title {
+	margin: 0.5em 0 1em 1em;
+}
+
+/* Help text */
+#helpCont {
+	padding: 1em;
+	line-height: 150%;
+	background-color: #efefef;
+	color: black;
+	display: none;
+}
+#helpHand {
+	text-align: right;
+}
+#helpHand a {
+	padding: 0 0.75em 0.25em 0.75em;
+	background-color: #efefef;
+	color: black;
+}
+
+/* Pop-up box for folder permission */
+#folderPermPopup {
+	display: none;
+	background-color: #fff;
+	background-color: rgba(255,255,255,0.8);
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 480px;
+	height: 380px;
+	margin-top: -200px;
+	margin-left: -250px;
+	border: 1px solid #000;
+	z-index: 9;
+	padding: 10px;
+	
+	-webkit-box-shadow: 0px 0px 10px #000;
+	-moz-box-shadow: 0px 0px 10px #000;
+	box-shadow: 0px 0px 10px #000;
+	
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px; 
+}
+#folderPermPopup div {
+	text-align: right;
+	font-weight: bold;
+}
+#folderPermPopup h3 {
+	margin: 0.5em 0;
+}
+
+
+
+/*******************************************************************************************************/
+/* Menu  */
+/*******************************************************************************************************/
+
+nav {
+	display: block;
+	 clear: left;
+	float: left;
+    	width: 100%;
+}
+
+/*** adding the class sf-navbar in addition to sf-menu creates an all-horizontal nav-bar menu ***/
+/*** ESSENTIAL STYLES ***/
+.sf-menu, .sf-menu * {
+	margin:			0;
+	padding:			0;
+	list-style:		none;
+}
+.sf-menu {
+	line-height:	1.0;
+}
+.sf-menu ul {
+	position:		absolute;
+	top:			-999em;
+	width:			15em; /* left offset of submenus need to match (see below) */
+}
+.sf-menu ul li {
+	width:			100%; 
+}
+.sf-menu li:hover {
+	visibility:		inherit; /* fixes IE7 'sticky bug' */
+}
+.sf-menu li {
+	float:			left;
+	position:		relative;
+}
+.sf-menu a {
+	display:		block;
+	position:		relative;
+}
+.sf-menu li:hover ul,
+.sf-menu li.sfHover ul {
+	left:			0;
+	top:			2.5em; /* match top ul list item height */
+	z-index:		99;
+}
+ul.sf-menu li:hover li ul,
+ul.sf-menu li.sfHover li ul {
+	top:			-999em;
+}
+ul.sf-menu li li:hover ul,
+ul.sf-menu li li.sfHover ul {
+	left:			10em; /* match ul width */
+	top:			0;
+}
+ul.sf-menu li li:hover li ul,
+ul.sf-menu li li.sfHover li ul {
+	top:			-999em;
+}
+ul.sf-menu li li li:hover ul,
+ul.sf-menu li li li.sfHover ul {
+	left:			10em; /* match ul width */
+	top:			0;
+}
+
+/***  SKIN ***/
+.sf-menu {
+	float:			left;
+	margin-bottom:	1em;
+}
+.sf-menu a {
+	border-left:	1px solid #fff;
+	border-top:	1px solid #CFDEFF;
+	padding: 		.75em 1em;
+	text-decoration:none;
+}
+.sf-menu a, .sf-menu a:visited { /* visited pseudo selector so IE6 applies text colour*/
+	color:			#EAFFED;
+}
+.sf-menu li {
+	background:		#20548E;
+}
+.sf-menu li.current {
+		background:		#1A4473;
+}
+.sf-menu li li {
+	background:		#20548E; /* #9F1B1B;  */
+}
+.sf-menu li li li {
+	background:		#9AAEDB;
+}
+.sf-menu li:hover, .sf-menu li.sfHover,
+.sf-menu a:focus, .sf-menu a:hover, .sf-menu a:active {
+	background:		#1A4473;
+	outline:		0;
+}
+li.logout  {
+	background:		#9F1B1B;
+}
+
+/*** arrows **/
+.sf-menu a.sf-with-ul {
+	padding-right: 	2.25em;
+	min-width:		1px; /* trigger IE7 hasLayout so spans position accurately */
+}
+.sf-sub-indicator {
+	position:		absolute;
+	display:		block;
+	right:			.75em;
+	top:			1.05em; /* IE6 only */
+	width:			10px;
+	height:			10px;
+	text-indent: 	-999em;
+	overflow:		hidden;
+	background:		url('images/arrows-ffffff.png') no-repeat -10px -100px; /* 8-bit indexed alpha png. IE6 gets solid image only */
+}
+a > .sf-sub-indicator {  /* give all except IE6 the correct values */
+	top:			.8em;
+	background-position: 0 -100px; /* use translucent arrow for modern browsers*/
+}
+/* apply hovers to modern browsers */
+a:focus > .sf-sub-indicator,
+a:hover > .sf-sub-indicator,
+a:active > .sf-sub-indicator,
+li:hover > a > .sf-sub-indicator,
+li.sfHover > a > .sf-sub-indicator {
+	background-position: -10px -100px; /* arrow hovers for modern browsers*/
+}
+
+/* point right for anchors in subs */
+.sf-menu ul .sf-sub-indicator { background-position:  -10px 0; }
+.sf-menu ul a > .sf-sub-indicator { background-position:  0 0; }
+/* apply hovers to modern browsers */
+.sf-menu ul a:focus > .sf-sub-indicator,
+.sf-menu ul a:hover > .sf-sub-indicator,
+.sf-menu ul a:active > .sf-sub-indicator,
+.sf-menu ul li:hover > a > .sf-sub-indicator,
+.sf-menu ul li.sfHover > a > .sf-sub-indicator {
+	background-position: -10px 0; /* arrow hovers for modern browsers*/
+}
+
+/*** shadows for all but IE6 ***/
+.sf-shadow ul {
+	background:	url('images/shadow.png') no-repeat bottom right;
+	padding: 0 8px 9px 0;
+	-moz-border-radius-bottomleft: 17px;
+	-moz-border-radius-topright: 17px;
+	-webkit-border-top-right-radius: 17px;
+	-webkit-border-bottom-left-radius: 17px;
+}
+.sf-shadow ul.sf-shadow-off {
+	background: transparent;
+}
+
+#usermanager {
+    width: 100%;
+    min-height: 150px;
+    max-height: 100%;
+    min-width:  640px;
+    /*height: 100px;*/
+    /*display: block;*/
+    /*height: 100px;*/
+}
+#usermanager>div {
+    border: 1px solid silver;
+}
+#usermanager #userList{
+    width: 10%;
+    height: 100%;
+    float: left;
+    overflow: auto;
+/*    border: 1px solid silver;*/
+    margin: 0 0 0 1em;
+    padding: 1px;
+
+    
+}
+#usermanager #userOptions{
+/*    width: 60%;*/
+/*    clear: right;*/
+/*    margin-left: 15%;
+    margin-right: 25%;*/
+    padding: 2px 2px 2px 1em;
+    margin: 0 22% 0 12%;
+/*    clear: right;
+    float: right;*/
+    /*min-height: 100%;*/
+    /*float: right;*/
+    overflow: auto;
+    height: 100%;
+/*    border: 1px solid silver;*/
+
+}
+#usermanager #userPermission{
+    width: 20%;
+    /*height: 100%;*/
+    margin: 0; padding: 0;
+    height: 100%;
+    float: right;
+    overflow: auto;
+/*    border: 1px solid silver;*/
+
+}
+#usermanager #userList button{
+    width: 100%;
+}
+
+#usermanager .temp_buttons{
+    width: 10em;
+    height: 2.5em;
+    margin: 10px;
+/*    font-size: small;*/
+}
+
+#usermanager .userOptionsElement{
+    width: 24em;
+}
+
+#usermanager label{
+    display: inline-block;
+    width: 10em;
+}
+#userList li button .buttonMenuSelected{
+    color: #f4f954;
+    font-weight: bolder;
+}

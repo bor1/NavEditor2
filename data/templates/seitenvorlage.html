@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+	  <!-- NAVEDITOR_TEMPL_TYPE=VORL -->
+    <title>Startseite</title>
+    <!--#include virtual="/ssi/head.shtml" --> 
+  </head>
+  <body>  <!-- begin: body -->
+  <div class="page_margins">  <!-- begin: page_margins --> 
+    <div id="seite" class="page">  <!-- begin: seite -->
+      <a name="seitenmarke" id="seitenmarke"></a>
+      
+      <header><div id="kopf">  <!-- begin: kopf -->
+		  	<div id="logo">
+				<p><a href="/">$PLATZHALTER-NAME-WEBAUFTRITT</a></p>     
+			</div>
+			<div id="titel">	 	
+        			<h1>Seitentitel</h1> 
+			</div>       
+		 	<!--#include virtual="/ssi/kopf.shtml" -->             
+	</div></header>  <!-- end: kopf -->
+      	<hr id="nachkopf" />  
+		<div id="main">  <!-- begin: main -->
+      		<div id="menu">  <!-- begin: menu -->	  
+		        <div id="bereichsmenu">
+		         	<h2><a name="bereichsmenumarke" id="bereichsmenumarke">Navigation</a></h2>      
+				  	<!--#include virtual="/cgi-bin/navigation/navigation.pl" -->		  
+		        </div>
+		        <!--#include virtual="/ssi/kurzinfo.shtml" -->		
+		</div>  <!-- end: menu -->
+		<!--#include virtual="/ssi/sidebar.shtml" -->
+		     
+		<!-- CONTENT ****************************************************************** -->
+		<!-- ************************************************************************** -->       
+	    	<div id="content">  <!-- begin: content -->
+	        <a name="contentmarke" id="contentmarke"></a>                  		
+			<!--#include virtual="/ssi/inhaltsinfo.shtml" -->		
+
+			<!-- TEXT AB HIER --> 
+			
+								
+					<h2>Mustertext Lorem Ipsum</h2>
+					<blockquote>
+						<p>
+							Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt, explicabo. Nemo enim ipsam voluptatem, quia voluptas sit, aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos, qui ratione voluptatem sequi nesciunt, neque porro quisquam est, qui do<b>lorem ipsum,</b>
+							quia <b>dolor sit, amet, consectetur, adipisci</b>
+							<b>velit, sed</b>
+							quia non numquam <b>eius mod</b>i <b>tempora incidunt, ut labore et dolore magna</b>m <b>aliqua</b>m quaerat voluptatem. <b>Ut enim ad minim</b>a <b>veniam, quis nostrum exercitation</b>em <b>ullam co</b>rporis suscipit <b>laborios</b>am, <b>nisi ut aliquid ex ea commodi consequat</b>ur? <b>Quis aute</b>m vel eum <b>iure reprehenderit,</b>
+							qui <b>in</b>
+							ea <b>voluptate velit esse,</b>
+							quam nihil molestiae <b>c</b>onsequatur, vel <b>illum,</b>
+							qui <b>dolore</b>m <b>eu</b>m <b>fugiat,</b>
+							quo voluptas <b>nulla pariatur</b>?
+						</p>
+						<p>
+							<img src="/img/friedrich.jpg" width="307" height="204" alt="Foto der Friedrich-Statue auf dem Schlossplatz in Erlangen" />At vero eos et accusamus et iusto odio dignissimos ducimus, qui blanditiis praesentium voluptatum deleniti atque corrupti, quos dolores et quas molestias <b>exceptur</b>i <b>sint, obcaecat</b>i <b>cupiditat</b>e <b>non pro</b>v<b>ident,</b>
+							similique <b>sunt in culpa,</b>
+							<b>qui officia deserunt mollit</b>ia <b>anim</b>i, <b>id est laborum</b>
+							et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio, cumque nihil impedit, quo minus id, quod maxime placeat, facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet, ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.
+						</p>
+					</blockquote>
+					<p>
+						<cite>
+							Quelle: <a href="http://de.wikipedia.org/wiki/Lorem_Ipsum">Wikipedia: Lorem Ipsum</a>
+						</cite>
+					</p>
+					
+					
+	   		 <!-- AB HIER KEIN TEXT MEHR --> 	
+             
+      		 <hr id="vorfooter" />
+	      	</div>  <!-- end: content -->                       
+     	</div>  <!-- end: main -->                   
+        <footer><div id="footer">  <!-- begin: footer -->
+           <h2><a name="footermarke" id="footermarke">Informationen zur Seite</a></h2>
+            <p class="last_modified"><span>Letzte &Auml;nderung:</span> <!--#config timefmt="%d.%m.%Y"--><!--#echo var="LAST_MODIFIED"--></p>			
+           <div id="footerinfos">  <!-- begin: footerinfos -->
+              <!--#include virtual="/ssi/footerinfos.shtml" -->
+              <!--#include virtual="/ssi/zusatzinfo.shtml" -->		
+           </div> <!-- end: footerinfos -->	
+        </div></footer>   <!-- end: footer -->
+        
+    </div>  <!-- end: seite -->
+  </div>  <!-- end: page_margins  -->
+  </body> <!-- end: body -->
+</html>

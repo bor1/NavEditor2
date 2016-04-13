@@ -1,0 +1,28 @@
+
+        <div id="suche">
+          <h2><a name="suche">Suche</a></h2>
+            <form method="get" action="/suche.shtml">
+               <p>
+	               <label for="suchbegriff">Suche:</label>
+	               <input id="suchbegriff" name="Suchbegriff" type="text" value="Suchbegriff eingeben"
+				   onfocus="if(this.value=='Suchbegriff eingeben')this.value='';"
+				   onblur="if(this.value=='')this.value='Suchbegriff eingeben';"
+				   maxlength="100" />
+	               <input type="submit" value="suchen" />
+               </p>
+            </form>
+        </div>
+
+        <div id="breadcrumb">
+          <h2>Sie befinden sich hier: </h2>
+		  	 <p><!--#include virtual="/cgi-bin/navigation/breadcrumb.pl" --></p>
+        </div>
+         <div id="sprungmarken">
+          <h2>Sprungmarken</h2>
+          <ul>
+		<li class="first"><a href="#contentmarke">Zum Inhalt springen</a><span class="skip">. </span></li>
+		<li><a href="#bereichsmenumarke">Zur Navigation springen</a><span class="skip">. </span></li>		
+		<li class="last"><a href="#hilfemarke">Zu den allgemeinen Informationen springen</a><span class="skip">. </span></li>
+	</ul>
+        </div>
+

@@ -1,0 +1,16 @@
+
+        <div id="breadcrumb">
+          <h2>Sie befinden sich hier: </h2>
+		  	 <p><!--#include virtual="/cgi-bin/navigation/breadcrumb.pl" --></p>
+        </div>
+         <div id="sprungmarken">
+          <h2>Sprungmarken</h2>
+          <ul>
+		<li class="first"><a href="#contentmarke">Zum Inhalt springen</a><span class="skip">. </span></li>
+		<li><a href="#bereichsmenumarke">Zur Navigation springen</a><span class="skip">. </span></li>		
+		<li class="last"><a href="#hilfemarke">Zu den allgemeinen Informationen springen</a><span class="skip">. </span></li> 
+          </ul>
+        </div>
+
+        <!--#include virtual="/ssi/zielgruppenmenu.shtml" -->
+

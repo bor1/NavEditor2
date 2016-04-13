@@ -1,0 +1,31 @@
+<p>
+Der Fu&szlig;text enth&auml;lt sowohl das "technische Menu" als auch statische Texte.
+Normalerweise sollte dieser Bereich nicht ge&auml;ndert werden. Bitte seien Sie umsichtig bei &Auml;nderungen in diesem Bereich.
+
+Zur Darstellung des dynamisch erzeugen technischen Men&uuml;s wird innerhalb des Fu&szlig;textes folgende SSI-Anweisung verwendet:
+</p>
+<code>
+			&lt;div id="tecmenu"&gt;	 &lt;!-- begin: tecmenu --&gt;		
+		        	&lt;h2 class="skip"&gt;&lt;a name="hilfemarke" id="hilfemarke"&gt;Technisches Menu&lt;/a&gt;&lt;/h2&gt;		
+					 &lt;!--#include virtual="/cgi-bin/navigation/inhalt.pl?type=sonder&noU=1&nodfn=1&nochilds=1" --&gt; 
+	        	&lt;/div&gt; &lt;!-- end: tecmenu --&gt;			        	
+</code> 
+
+<p>F&uuml;gen Sie diese Anweisung in dem Quellcode (Button HTML) ein, falls Sie aus versehen das technische Men&uuml; gel&ouml;scht haben.
+
+Bitte beachten Sie, dass nur bei der dynamischen Darstellung die Navigation des NavEditors, bzw. aus der Navigationsindexdatei ber&uuml;cksichtigt wird.
+Sollten in der Navigation keine Eintr&auml;ge f&uuml;r dieses Men&uuml;r vorhanden sein, kann hier auch nichts dargestellt werden.
+
+Alternativ kann man auch mit normalen HTML-Anweisungen das technische Me&uuml; erstellen. Es ist in diesem Fall statisch und sorgt so f&uuml;r 
+einen (minimalen) Geschwindigkeitsgewinn beim Aufruf der Webseite. In diesem Fall kann der HTML-Inhalt wie folgt aussehen:
+</p>
+
+<code>
+			&lt;div id="tecmenu"&gt;  &lt;!-- begin: tecmenu --&gt;		
+		        	&lt;h2 class="skip"&gt;&lt;a name="hilfemarke" id="hilfemarke"&gt;Technisches Menu&lt;/a&gt;&lt;/h2&gt;		
+					&lt;ul&gt;
+						&lt;li>&lt;a href=""&gt;Menupunkt1&lt;/a&gt;&lt;/li&gt;			
+						&lt;li>&lt;a href=""&gt;Menupunkt2&lt;/a&gt;&lt;/li&gt;
+					&lt;/ul&gt;
+	        	&lt;/div&gt; &lt;!-- end: tecmenu --&gt;			        	
+</code> 
