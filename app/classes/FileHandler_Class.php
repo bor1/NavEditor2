@@ -549,6 +549,21 @@ class FileHandler {
 		file_put_contents($page_file_path, $fcontent);
 	}
 	
+   public function replace_div_with_id($id, $fpath, $rcontent) {
+	   $fcontent = file_get_contents ( $fpath );
+	   $doc = new DOMDocument();
+	   libxml_use_internal_errors(true);
+	   $doc->loadHTML($fcontent);
+	   $new_div = $doc->createElement('div');
+	   $new_div->setAttribute('id', $id);
+	   $fragment = $doc->createDocumentFragment();
+	   $fragment->appendXML($rcontent);
+	   $new_div->appendChild($fragment);
+	   $old_div = $doc->getElementById((string)$id);
+	   $old_div->parentNode->replaceChild($new_div, $old_div);
+	   $domSafeContent = $doc->saveHTML();
+           file_put_contents( $fpath, $domSafeContent );
+   }
 	public function UpdateTitleFile($titile_text) {
 		global $ne2_config_info;
 		$titleFilePath = $ne2_config_info['app_path'] . $ne2_config_info['current_site_title_file'];
