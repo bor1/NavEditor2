@@ -772,10 +772,11 @@ function buildFolderTree(jsonData) {
 	}
 	_indent++;
 	for(var i = 0; i < jsonData.length; i++) {
-		if(jsonData[i].child.length > 0) { // only folders needed
+	//display all available sites; but Startseite!
+	//	if(jsonData[i].child.length > 0) { // displaysonly folders
 			_navTreeOptString += "<option value='" + jsonData[i].key + "_" + jsonData[i].path + "'>" + makeIndent(_indent) + jsonData[i].title + "</option>";
 			buildFolderTree(jsonData[i].child); // recursive
-		}
+	//	}
 	}
 	_indent--;
 }
