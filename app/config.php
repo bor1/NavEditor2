@@ -42,7 +42,7 @@ $ne2_config_info['app_title'] = 'NavEditor 2 <sup>Delta</sup>';
 $ne2_config_info['app_titleplain'] = 'NavEditor 2 Delta';
 
 // current version
-$ne2_config_info['version'] = '2.13.0618';
+$ne2_config_info['version'] = '2.16.0414';
 
 // update host
 $ne2_config_info['update_url'] = 'http://www.vorlagen.uni-erlangen.de/downloads/naveditor/';

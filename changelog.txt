@@ -1,6 +1,13 @@
+Version 2.16.0414
+* Bugfixes:
+** Verschieben auch in Seiten ohne Unterseiten möglich;  
+** Bei HTML in Name des Webauftritts auch HTML-Tags möglich 
+
+
 Version 2.13.0306
 * Seitenvorlage angepasst: Umstellung/Aktualisierung auf HTML5, sowie weitere
   Anpassungen der Seitenstruktur.
+
 
 Version 2.13.0219
 * Sidebar in Allgemeine Bereiche aufgenommen. Die Sidebar wird fuer neue HTML5-Designs
