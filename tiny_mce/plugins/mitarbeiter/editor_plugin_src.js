@@ -43,7 +43,7 @@
 			});
 			
 			ed.onBeforeSetContent.add(function(ed, o) {
-				o.content = o.content.replace(/<!--#include virtual=\"\/vkdaten\/tools\/univis\/mitarbeiter\.pl\" -->/g, ma_img);
+				o.content = o.content.replace(/<!--#include virtual=\"\/vkdaten\/tools\/univis\/mitarbeiter-alle\.pl\" -->/g, ma_img);
 			});
 			
 			ed.onPostProcess.add(function(ed, o) {
