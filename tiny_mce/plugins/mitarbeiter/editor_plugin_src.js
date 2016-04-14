@@ -15,9 +15,9 @@
 	tinymce.create('tinymce.plugins.MitarbeiterPlugin', {
 
 		init : function(ed, url) {
-			var ma_img = '<table id="feedimport_table" style="height: 87px; width: 404px; background-color: #65849a; border: 4px solid #000000;" border="2" cellspacing="0" cellpadding="0" frame="border" align="center"><tbody><tr><td><p style="text-align: center;"><strong>&lt;!--  #include virtual="/cgi-bin/univis/mitarbeiter.pl" --&gt;</strong></p></td></tr></tbody></table>',
+			var ma_img = '<table id="feedimport_table" style="height: 87px; width: 404px; background-color: #65849a; border: 4px solid #000000;" border="2" cellspacing="0" cellpadding="0" frame="border" align="center"><tbody><tr><td><p style="text-align: center;"><strong>&lt;!--  #include virtual="/vkdaten/tools/univis/mitarbeiter-alle.pl" --&gt;</strong></p></td></tr></tbody></table>',
 			cls = 'addMitarbeiter',
-			ma_inhalt = '<!--#include virtual="/cgi-bin/univis/mitarbeiter.pl" -->';
+			ma_inhalt = '<!--#include virtual="/vkdaten/tools/univis/mitarbeiter-alle.pl" -->';
 			// Register the command
 			ed.addCommand(cls, function() {
 				ed.execCommand('mceInsertContent', 0, ma_img);
@@ -43,7 +43,7 @@
 			});
 			
 			ed.onBeforeSetContent.add(function(ed, o) {
-				o.content = o.content.replace(/<!--#include virtual=\"\/cgi-bin\/univis\/mitarbeiter\.pl\" -->/g, ma_img);
+				o.content = o.content.replace(/<!--#include virtual=\"\/vkdaten\/tools\/univis\/mitarbeiter\.pl\" -->/g, ma_img);
 			});
 			
 			ed.onPostProcess.add(function(ed, o) {
