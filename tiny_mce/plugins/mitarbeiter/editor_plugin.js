@@ -17,7 +17,7 @@
 		init : function(ed, url) {
 			var ma_img = '<img title="Mitarbeiter" src="' + url +'/img/mitarbeiter.jpg" alt="" />',
 			cls = 'addMitarbeiter',
-			ma_inhalt = '<!--#include virtual="/vkdaten/tools/univis/mitarbeiter-alle.pl" -->';
+			ma_inhalt = '<!--#include virtual="/vkdaten/tools/univis/mitarbeiter-alle.php" -->';
 			// Register the command
 			ed.addCommand(cls, function() {
 				ed.execCommand('mceInsertContent', 0, ma_img);
@@ -43,7 +43,7 @@
 			});
 			
 			ed.onBeforeSetContent.add(function(ed, o) {
-				o.content = o.content.replace(/<!--#include virtual=\"\/vkdaten\/tools\/univis\/mitarbeiter-alle\.pl\" -->/g, ma_img);
+				o.content = o.content.replace(/<!--#include virtual=\"\/vkdaten\/tools\/univis\/mitarbeiter-alle\.php\" -->/g, ma_img);
 			});
 			
 			ed.onPostProcess.add(function(ed, o) {
