@@ -57,16 +57,15 @@ function get_ma_file_dir() {
 	$ma_file_dir = '';
 	
 	foreach($retv as $ar) {
-		if(($ar['opt_name'] == 'URL_Mitarbeiter') && ($ar['opt_value'] != '')) {
+		if(($ar['opt_name'] == 'Datenverzeichnis') && ($ar['opt_value'] != '')) {
 			$v1 = substr($ar['opt_value'], 0, strrpos($ar['opt_value'], '/'));
-			$ma_file_dir = $_SERVER['DOCUMENT_ROOT'] . $v1 . '/';
+			$ma_file_dir = $_SERVER['DOCUMENT_ROOT'] . $v1 . '/mitarbeiter-einzeln/';
 		}
 		if($ar['opt_name'] == 'UnivISId' || $ar['opt_name'] == 'UnivISOrgNr') {
 			$univis_id = $ar['opt_value'];
 		}
-	}
 	if(!is_dir($ma_file_dir)) {
-		$ma_file_dir = $_SERVER['DOCUMENT_ROOT'] . '/mitarbeiter/daten/';
+		$ma_file_dir = $_SERVER['DOCUMENT_ROOT'] . '/univis-daten/mitarbeiter-einzeln/';
 	}
 	
 	return $ma_file_dir;
