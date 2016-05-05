@@ -918,6 +918,7 @@ $(document).ready(function() {
 	$("#btnPublishTree").click(function() {
 		if(confirm("Sind Sie sicher, dass Sie die Seite veröffentlichen wollen? Nicht gespeicherte Änderung an der Seite gehen dabei verloren.")) {
 			publishTree();
+			//TODO An dier Stelle ein 'setCurrentNode' um die zu bearbeitende Seite hervorbringen   
 			location.reload();
 		}
 	});
