@@ -916,8 +916,10 @@ $(document).ready(function() {
 	});
 
 	$("#btnPublishTree").click(function() {
-		if(confirm("Sind Sie sicher, dass Sie die Seite veröffentlichen wollen?")) {
+		if(confirm("Sind Sie sicher, dass Sie die Seite veröffentlichen wollen? Nicht gespeicherte Änderung an der Seite gehen dabei verloren.")) {
 			publishTree();
+			location.reload();
+			btnStartClickEx();
 		}
 	});
 
