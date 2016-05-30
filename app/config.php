@@ -294,13 +294,22 @@ $ne2_config_info['jquery_file_tree'] = Array (
 	),
     42 => array(
 		'id'		=> 41,
-		'title'	=> 'Caches',
-		'link'	=> 'remove_caches.php',
+		'title'	=> 'UnivIS-Integration: Lehrveranstaltung',
+		'link'	=> 'up_zip.php',
 		'role'	=> 'admin',
 		'sub'	=> 0,
 		'up'	=> 40,
-		'desc'	=> 'Caches l&ouml;eschen',
+		'desc'	=> 'Datei zu einer Lehrveranstaltung mit Hilfe von Univis hinzufügen',
 	),
+    43 => array(
+    'id'		=> 41,
+    'title'	=> 'Caches',
+    'link'	=> 'remove_caches.php',
+    'role'	=> 'admin',
+    'sub'	=> 0,
+    'up'	=> 40,
+    'desc'	=> 'Caches l&ouml;eschen',
+  ),
 
 	50 => array(
 		'id'		=> 50,
