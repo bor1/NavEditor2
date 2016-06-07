@@ -35,9 +35,7 @@ function has_help_file() {
 
 <script type="text/javascript" src="tiny_mce/tiny_mce.js"></script>
 <script type="text/javascript">
-function please_confirm() {
-	return confirm('Sind Sie sicher das Sie die Datei hochladen wollen, falls eine Datei für die Lehrveranstaltung bereits existiert, wird diese &uuml;berschrieben?');
-}
+
 tinyMCE.init({
 	mode: "textareas",
 	language: "de",
@@ -102,6 +100,69 @@ function get_http_response_code($theURL) {
     $headers = get_headers($theURL);
     return substr($headers[0], 9, 3);
 }
+
+function get_lv_file_dir() {
+
+	// get ma path from univis.conf
+	$fpath = $_SERVER['DOCUMENT_ROOT'] . '/vkdaten/univis.conf';
+	$retv = array();
+	$to_concat = FALSE;
+	$fh = fopen($fpath, 'r') or die('Cannot open file!');
+	while(!feof($fh)) {
+		$oline = fgets($fh);
+		$pline = str_replace(array("\r", "\n", "\r\n"), '', ltrim($oline));
+		if((strlen($pline) == 0) || (substr($pline, 0, 1) == '#')) {
+			continue; // ignore comments and empty rows
+		}
+
+		if(substr($pline, strlen($pline) - 2, 2) == " \\") {
+			// concat next lines to form the value
+			if($to_concat === FALSE) {
+				$to_concat = TRUE;
+				$arr_opts1 = preg_split('/\t|\s{2,}/', $pline);
+				$opt1 = array(
+					'opt_name' => $arr_opts1[0],
+					'opt_value' => str_replace(" \\", "", $arr_opts1[1])
+				);
+				continue;
+			} else {
+				$opt1['opt_value'] .= " " . str_replace(" \\", "", $pline);
+			}
+		} else {
+			if($to_concat) {
+				$opt1['opt_value'] .= " " . $pline; // the last line
+				array_push($retv, $opt1);
+				$to_concat = FALSE;
+			} else {
+				$arr_opts = preg_split('/\t|\s{2,}/', $pline);
+				$opt = array(
+					'opt_name' => $arr_opts[0],
+					'opt_value' => $arr_opts[1]
+				);
+				array_push($retv, $opt);
+			}
+		}
+	}
+	fclose($fh);
+
+	$lv_file_dir = '';
+	$univis_id = '';
+	foreach($retv as $ar) {
+		if(($ar['opt_name'] == 'Datenverzeichnis') && ($ar['opt_value'] != '')) {
+			$v1 = substr($ar['opt_value'], 0, strrpos($ar['opt_value'], '/'));
+			$lv_file_dir = $_SERVER['DOCUMENT_ROOT'] . $v1 . '/lehrveranstaltungen-einzeln/';
+		}
+		if($ar['opt_name'] == 'UnivISId' || $ar['opt_name'] == 'UnivISOrgNr') {
+			$univis_id = $ar['opt_value'];
+		}
+	if(!is_dir($lv_file_dir)) {
+		$lv_file_dir = $_SERVER['DOCUMENT_ROOT'] . '/univis-daten/lehrveranstaltungen-einzeln/';
+	}
+
+	return $lv_file_dir;
+	}
+}
+$f = fopen("testfile.txt", "w");
 if($_FILES["zip_file"]["name"]) {
 	$filename = $_FILES["zip_file"]["name"];
 	$source = $_FILES["zip_file"]["tmp_name"];
@@ -115,53 +176,44 @@ if($_FILES["zip_file"]["name"]) {
 			break;
 		}
 	}
-
+$lvname = '';
 	$continue = strtolower($name[1]) == 'zip' ? true : false;
 	if(!$continue) {
 		$message = "Die Datei is keine .zip Datei, deswegen wurde das Hochladen abgebrochen. Bitte versuchen Sie es erneut mit einer .zip Datei.";
 	} else {
+		$lvid = $_POST['txtLvId'];
+		if(strpos($lvid, ".shtml") !== false) {
+			$lvid = explode(".", $lvid);
+		}
 
-		/* PHP current path */
-		$path = dirname(__FILE__).'/';  // absolute path to the directory where zipper.php is in
-		$lvurl = $_POST['txtLvUrl'];
+		$url = "http://univis.uni-erlangen.de/prg?search=lectures&id=".$lvid."&show=xml";
+		$sxml = simplexml_load_file($url);
 
-		$response_code = get_http_response_code($lvurl);
-				//XXX check if url['host'] isset
-		$url = parse_url($lvurl);
-		if($response_code=="200" && $url['host']=="univis.fau.de" && isset($url['query'])) {
-			$queries = explode("&", $url['query']);
-			$lvs_id = '';
-			$path_to_lvs = '';
-			foreach($queries as $attr) {
-				$pos = strpos($attr,"lvs=");
-				if( $pos !== false) {
-					$lvs_id = substr($attr, strrpos($attr, '/') + 1);
-					$path_to_lvs = substr($attr, strpos($attr, '=')+1);
-					break;
-				}
-			}
-			$univis_path=  $_SERVER['DOCUMENT_ROOT'] . '/univis-daten/lehrveranstaltungen-einzeln/';
-			$targetzip = $univis_path . $lvs_id . ".zip"; // target zip file
-			if(!is_dir($univis_path))
-				mkdir($univis_path, 0777);
-			//copy($source, $targetzip);
-			if(move_uploaded_file($source, $targetzip)) {
-				/*TODO extract the zip or not?
-				$zip = new ZipArchive();
-				$x = $zip->open($targetzip);  // open the zip file to extract
-				if ($x === true) {
-					$zip->extractTo($targetdir); // place in the directory with same name
-					$zip->close();
-					unlink($targetzip);
-				}*/
-				$message = "Ihre .zip Datei wurde erfolgreich hochgeladen und entpackt.";
+		if( isset($sxml->Lecture->name) ) {
+			$lvname =  $sxml->Lecture->name;
+
+			if(is_numeric($lvid) && strlen($lvid) === 8 || strlen($lvname) === 0) {
+				$targetdir = get_lv_file_dir();
+				fwrite($f,"targetdir:\t".$targetdir."\n");
+				$targetzip =  $lvid . ".zip"; // target zip file
+				fwrite($f,"targetzip:\t".$targetzip."\n");
+				if(!is_dir($targetdir))
+					mkdir($targetdir, 0777);
+				if(move_uploaded_file($source, $targetdir.$targetzip)) {
+					$message = "Ihre .zip Datei wurde erfolgreich hochgeladen.";
 			} else {
 				$message = "Es gab ein Problem bei dem hochladen. Bitte versuchen Sie es erneut. Achten Sie auf korrekte URL. \
 				<a href='http://univis.fau.de' target='_blank'>Hier</a> k&ouml;nnen Sie nach Ihrer veranstaltung suchen";
 			}
-		}	else {
-			$message = "URL nicht g&uuml;ltig oder nicht auf univis.fau.de. <a href='http://univis.fau.de' target='_blank'	>Hier</a> k&ouml;nnen Sie nach Ihrer veranstaltung suchen";
+		} 	else {
+				fclose($f);
+			$message = "URL nicht g&uuml;ltig oder nicht auf univis zufinden";
 		}
+		}	else {
+				fclose($f);
+			$message = "URL nicht g&uuml;ltig oder nicht auf univis zufinden";
+		}
+
 	}
 }
 
@@ -201,14 +253,14 @@ if($_FILES["zip_file"]["name"]) {
 				Um die Zip-Datei der korrekten veranstaltung zuzuordnen, geben Sie bitte die Url der Lehrverantaltung aus dem Univis ein.
         	<form enctype="multipart/form-data" method="post" action="">
 				<p>
-					<label for="LvId" style="text-align:right;">UNIVIS-Url:</label>
-					<input type="text" id="txtLvUrl" name="txtLvUrl" size="32" class="textBox" />
+					<label for="LvId" style="text-align:left;">Lehrveranstaltungs ID:</label>
+					<input type="text" id="txtLvId" name="txtLvId" size="32" class="textBox" />
 				</p>
 				<br />
 	<?php if($message) echo "<p>$message</p>"; ?>
-    <form enctype="multipart/form-data" method="post" onsubmit="return please_confirm();">
+    <form enctype="multipart/form-data" method="post" >
 			<label>Eine Datei auswählen: <input type="file" name="zip_file" /></label>
-			<input type="submit" name="submit" value="Hochladen" onsubmit="return please_confirm();"/>
+			<input type='submit' value='Hochladen' onclick='return confirm("Bitte &uuml;berpr&uuml;fen Sie die Lehrveranstaltungs-ID: "+document.getElementById("txtLvId").value +"\nVielen Dank!");'/>
 		</form>
 		</fieldset>
 	</div>

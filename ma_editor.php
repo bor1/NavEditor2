@@ -36,11 +36,11 @@ tinyMCE.init({
 	relative_urls: false,
 	convert_urls: false,
 	plugins: "safari,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
-	
+
 	theme_advanced_buttons1: "bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,formatselect,styleselect,|,bullist,numlist,outdent,indent,|,cut,copy,paste,pastetext,pasteword,|,undo,redo",
 	theme_advanced_buttons2: "link,unlink,anchor,image,cleanup,|,charmap,emotions,iespell,|,ltr,rtl,|,fullscreen,help,code,|,addIB1,addIB2,addIB3",
 	theme_advanced_buttons3: "",
-	
+
 	theme_advanced_toolbar_location: "top",
 	theme_advanced_toolbar_align: "left",
 	theme_advanced_statusbar_location: "bottom",
@@ -116,55 +116,55 @@ function ajaxFileUpload(maFileName) {
 			alert("Oops... " + e);
 		}
 	});
-	
+
 	return false;
 }
 
 function maNameEncode(maName) {
 	var fname = maName;
 	fname = fname.toLowerCase();
-	
+
 	// east euro chars? aeiou
 	fname = fname.replace(/\u00e0/g, "a"); // à
 	fname = fname.replace(/\u00e1/g, "a"); // á
 	fname = fname.replace(/\u00e2/g, "a"); // â
 	fname = fname.replace(/\u00e3/g, "a"); // ã
 	fname = fname.replace(/\u00e5/g, "a"); // å
-	
+
 	fname = fname.replace(/\u00e7/g, "c"); // ç
-	
+
 	fname = fname.replace(/\u00e8/g, "e"); // è
 	fname = fname.replace(/\u00e9/g, "e"); // é
 	fname = fname.replace(/\u00ea/g, "e"); // ê
 	fname = fname.replace(/\u00eb/g, "e"); // ë
-	
+
 	fname = fname.replace(/\u00ec/g, "i"); // ì
 	fname = fname.replace(/\u00ed/g, "i"); // í
 	fname = fname.replace(/\u00ee/g, "i"); // î
 	fname = fname.replace(/\u00ef/g, "i"); // ï
-	
+
 	fname = fname.replace(/\u00f0/g, "o"); // ð
 	fname = fname.replace(/\u00f2/g, "o"); // ò
 	fname = fname.replace(/\u00f3/g, "o"); // ó
 	fname = fname.replace(/\u00f4/g, "o"); // ô
 	fname = fname.replace(/\u00f5/g, "o"); // õ
-	
+
 	fname = fname.replace(/\u00f9/g, "u"); // ù
 	fname = fname.replace(/\u00fa/g, "u"); // ú
 	fname = fname.replace(/\u00fb/g, "u"); // û
-	
+
 	// German chars
 	fname = fname.replace(/\u00df/g, "ss");
 	fname = fname.replace(/\u00e4/g, "ae");
 	fname = fname.replace(/\u00f6/g, "oe");
 	fname = fname.replace(/\u00fc/g, "ue");
-	
+
 	// misc
 	fname = fname.replace(/\(.*\)/, ""); // remove parentheses
 	fname = fname.replace(/^\s+|\s+$/g, ""); // trim
 	fname = fname.replace(/([^\w.\-_])/g, "-"); // other chars to "-"
 	fname = fname.replace(/-{2,}/, "-"); // no more than one adjacent "-"
-	
+
 	return fname;
 }
 
@@ -176,7 +176,7 @@ function maNameDecode(flName) {
 		var tmp = maNames[i]
 				.replace(/ss/g, "&szlig;")
 				.replace(/oe/g, "&ouml;");
-		
+
 		maNames[i] = tmp.slice(0, 1).toUpperCase() + tmp.slice(1);
 	}
 	maName = maNames.join(" ");
@@ -194,7 +194,7 @@ function loadFileContent(fileName, displayName) {
 		$("#txtFirstName").val(names[0]);
 		$("#txtLastName").val(jQuery.trim(displayName.replace(names[0], "")));
 		$("#filAttachment").val("");
-		
+
 		// process the html content, show hidden divs
 		var oriContent = jdata.file_content;
 		// server ssi tag workaround
@@ -202,7 +202,7 @@ function loadFileContent(fileName, displayName) {
 		rdata = rdata.replace(/<comment>/g, "<!-" + "-");
 		rdata = rdata.replace(/<\/comment>/g, "-" + "->");
 		var modContent = rdata.replace(/style="display: none;"/ig, "style=\"display: block;\"");
-		
+
 		tinyMCE.get("txtContent").setContent(modContent);
 		if(jdata.photo_url != "") {
 			$("#userPhoto").attr("src", jdata.photo_url);
@@ -236,13 +236,13 @@ function loadMAListCallback(rdata) {
 	}
 	$("#confList ul").html(htmlString);
 	loadMAListDone = true;
-	
+
 	$("#confList ul li a.ma_edit").click(function() {
 		var cfn = $(this).attr("rel");
 		var dis = $(this).html();
 		loadFileContent(cfn, dis);
 	});
-	
+
 	$("#confList ul li a.ma_delete").click(function() {
 		var cfn = $(this).attr("rel");
 		if(confirm('Sind Sie sicher?')) {
@@ -261,7 +261,7 @@ function loadMAListCallback(rdata) {
 $(document).ready(function() {
 	loadUnivISId();
 	loadMAList();
-	
+
 	$("#btnAddNew").click(function() {
 		$("#txtFirstName").val("");
 		$("#txtLastName").val("");
@@ -270,7 +270,7 @@ $(document).ready(function() {
 		currentFileName = "";
 		$("#txtFirstName").focus();
 	});
-	
+
 	$("#btnUpdate").click(function() {
 		var fName = $("#txtFirstName").val();
 		var lName = $("#txtLastName").val();
@@ -287,13 +287,13 @@ $(document).ready(function() {
 		if($("#filAttachment").val() != "") {
 			hasPhoto = true;
 		}
-		
+
 		// restore the content (change all shown divs back to hidden)
 		var mContent = content.replace(/style="display: block;"/ig, "style=\"display: none;\"");
 		mContent = mContent.replace(new RegExp("<!-" + "-#", "g"), "<comment_ssi>");
 		mContent = mContent.replace(/<!--/g, "<comment>");
 		mContent = mContent.replace(/-->/g, "</comment>");
-		
+
 		$.post("app/edit_ma.php", {
 			"oper": "update_content",
 			"ma_file_name": currentFileName,
@@ -303,12 +303,12 @@ $(document).ready(function() {
 			if(hasPhoto) {
 				ajaxFileUpload(maNameEncode(maName) + ".jpg");
 			}
-			
+
 			alert(rdata);
 			loadMAList();
 		});
 	});
-	
+
 	$("#btnUpload").click(function() {
 		var fName = $("#txtFirstName").val();
 		var lName = $("#txtLastName").val();
@@ -324,14 +324,14 @@ $(document).ready(function() {
 			return false;
 		}
 	});
-	
+
 	$("#btnSetUnivISId").click(function() {
 		var newUnivISId = $("#txtUnivISId").val();
 		if(newUnivISId == "") {
 			alert("ID darf nicht leer sein!");
 			return false;
 		}
-		
+
 		if(confirm("Ist die neue UnivIS-ID richtig?")) {
 			$.post("app/edit_ma.php", {
 				"oper": "set_univis_id",
@@ -369,21 +369,21 @@ $(document).ready(function() {
 	<div id="navBar">
 		<?php require('common_nav_menu.php'); ?>
 	</div>
-	
+
 	<div id="confList">
 		<fieldset>
 			<legend>UnivIS-ID</legend>
 			<input type="text" id="txtUnivISId" class="textBox" size="16" />
 			<input type="button" id="btnSetUnivISId" class="button" value="setzen" />
 		</fieldset>
-		
+
 		<fieldset>
 			<legend>Die vorhandenen Zusatzinformationen<br />zu Personen</legend>
 			<input type="button" id="btnAddNew" class="button" value="Neue(n) Mitarbeiter(in) anlegen" />
 			<ul></ul>
 		</fieldset>
 	</div>
-	
+
 	<div id="contentPanel2">
 	<?php
 	// help
@@ -418,8 +418,8 @@ $(document).ready(function() {
 			</fieldset>
 		</form>
 	</div>
-	
-<?php require('common_footer.php'); ?>	
+
+<?php require('common_footer.php'); ?>
 </div>
 </body>
 
