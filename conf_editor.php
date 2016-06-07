@@ -328,6 +328,7 @@ $(document).ready(function() {
 		}
 		var text = $("#name-des-Webauftritts").val();
 		var desc = $("#kurzbeschreibung-zum-Webauftritt").val();
+		var lang = $("#sprache").val();
 		var imgUrl = $("#logo-URL").val();
 		var imgAlt = $("#logo-Alt").val();
 		var siteTitle = $("#titel-des-Webauftritts").val();
@@ -353,6 +354,7 @@ $(document).ready(function() {
 			var pdata = {
 				"content_text": text,
 				"content_desc": desc,
+				"content_language": lang,
 				"content_img": img,
 				"content_img_alt": imgAlt,
 				"site_title_text": siteTitle,
@@ -381,6 +383,7 @@ $(document).ready(function() {
 			$(this).attr("disabled", "disabled");
 			var text = $("#name-des-Webauftritts").val();
 			var desc = $("#kurzbeschreibung-zum-Webauftritt").val();
+			var lang = $("#sprache").val();
 			var imgUrl = $("#logo-URL").val();
 			var imgAlt = $("#logo-Alt").val();
 			var siteTitle = $("#titel-des-Webauftritts").val();
@@ -394,6 +397,7 @@ $(document).ready(function() {
 			var pdata = {
 				"content_text": text,
 				"content_desc": desc,
+				"content_language": lang,
 				"content_img": img,
 				"content_img_alt": imgAlt,
 				"site_title_text": siteTitle,

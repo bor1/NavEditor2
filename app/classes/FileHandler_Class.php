@@ -13,10 +13,10 @@ class FileHandler {
 	private $_arr_root_node;
 	private $_navindex_backup_dir;
 	private $_title_icon_pattern;
-	
+
 	public function __construct() {
 		global $ne2_config_info;
-		
+
 		$this->_arr_json = array(
 			'A' => array(),
 			'Z' => array(),
@@ -38,24 +38,24 @@ class FileHandler {
 		$this->_navindex_backup_dir = $ne2_config_info['navindex_backup_dir'];
 		$this->_title_icon_pattern = '/<img alt="(.+)" src="(.+)" title="(.+)" class="(.+)" \/>/i';
 	}
-	
+
 	public function setTemplateFile($templPath) {
 		$this->_templateFilePath = $templPath;
 	}
-	
+
 	public function __destruct() {
 		unset($this->arr_json);
 	}
-	
+
 	public function setLogger($logger) {
 		$this->_logger = $logger;
 	}
-	
+
 	private function _nodeType($nodeKey) {
 		$firstLetter = substr($nodeKey, 0, 1);
 		return strtoupper($firstLetter);
 	}
-	
+
 	private function _make_sort_key($ks) {
 		$pad_len = 3; // max 999 item no. -_-
 		$ksa = explode('-', $ks);
@@ -66,7 +66,7 @@ class FileHandler {
 		}
 		return implode($ksa, '-');
 	}
-	
+
 	function _extractKeyString($key_string) {
 		$ret_arr = array(
 			'key' => '',
@@ -94,7 +94,7 @@ class FileHandler {
 			return $ret_arr;
 		}
 	}
-	
+
 	private function _updateSortArray($key, $vk, $vv) {
 		foreach($this->_sort_array as &$sa) {
 			if($sa['key'] == $key) {
@@ -102,23 +102,23 @@ class FileHandler {
 				break;
 			}
 		}
-		
+
 		if($key == 'U') {
 			$this->_arr_root_node[$vk] = $vv;
 		}
 	}
-	
+
 	private function _filterChars($source) {
 		$filter = array('/', '\\');
 		return str_replace($filter, '', trim($source));
 	}
-	
+
 	private function _parseLine($line_string) {
 		$arr_buf = explode("\t", $line_string);
 		if(count($arr_buf) <= 1) {
 			return FALSE;
 		}
-		
+
 		$arr_line = array();
 		$key_string = $this->_filterChars($arr_buf[0]); // filter the bad chars
 		$key_ext = $this->_extractKeyString($key_string);
@@ -144,21 +144,21 @@ class FileHandler {
 			$arr_line['title'] = html_entity_decode(strip_tags($title_text), ENT_COMPAT, 'UTF-8'); // Title text
 			$arr_line['title_display'] = $title_display;
 			$arr_line['child'] = array(); // Hold for child-folders
-			
+
 			$arr_line['alias'] = isset($arr_buf[2]) ? $this->_filterChars($arr_buf[2]) : '';
 			$arr_line['accesskey'] = isset($arr_buf[3]) ? $arr_buf[3] : '';
 			$arr_line['email'] = isset($arr_buf[4]) ? $arr_buf[4] : '';
-			
+
 			$arr_line['path'] = '';
 			$arr_line['quicklink'] = FALSE;
 			$arr_line['displaylink'] = FALSE;
-			
+
 			$arr_line['url'] = '';
 			$arr_line['info_text'] = '';
 			$arr_line['title_icon'] = $title_icon;
 			$arr_line['title_icon_alt'] = $title_icon_alt;
 			$arr_line['title_icon_title'] = $title_icon_title;
-			
+
 			if($key_ext['key'] != 'U') {
 				array_push($this->_sort_array, $arr_line);
 			} else {
@@ -171,7 +171,7 @@ class FileHandler {
 				$vval = $arr_buf[1];
 				$this->_updateSortArray($mkey, $vkey, $vval);
 			}
-			
+
 			if($key_ext['info_text'] == TRUE) {
 				$mkey = $key_ext['key'];
 				$vkey = 'info_text';
@@ -179,26 +179,26 @@ class FileHandler {
 				$this->_updateSortArray($mkey, $vkey, $vval);
 			}
 		}
-		
+
 		return TRUE;
 	}
-	
+
 	function _prepareTree() {
 		// !!!
 		sort($this->_sort_array);
-		
+
 		$this->_sort_array[0] = $this->_arr_root_node;
-		
+
 		foreach($this->_sort_array as $sa) {
 			$this->_addToJSONArray($sa);
 		}
 	}
-	
+
 	private function _addToJSONArray($arr_part) {
 		$check_key = $arr_part['key'];
 		$arr_check_key = explode("-", $check_key);
 		$nodeType = $this->_nodeType($check_key);
-		
+
 		switch(count($arr_check_key)) {
 			case 1: // A1
 				switch($nodeType) {
@@ -226,7 +226,7 @@ class FileHandler {
 				break;
 		}
 	}
-	
+
 	private function _setQuickLink($key, &$nodes) {
 		for($i = 0; $i < count($nodes); $i++) {
 			if(strcmp($nodes[$i]['key'], $key) == 0) {
@@ -238,7 +238,7 @@ class FileHandler {
 			}
 		}
 	}
-	
+
 	private function _setDisplayLink($key, &$nodes) {
 		for($i = 0; $i < count($nodes); $i++) {
 			if(strcmp($nodes[$i]['key'], $key) == 0) {
@@ -250,7 +250,7 @@ class FileHandler {
 			}
 		}
 	}
-	
+
 	public function loadJSONFromFile($file_path) {
 		$fh = fopen($file_path, 'r') or die("Cannot open Nav-Tree file! - $php_errormsg");
 		while(!feof($fh)) {
@@ -260,7 +260,7 @@ class FileHandler {
 			if((strlen($this->_buffer) == 0) || (substr($this->_buffer, 0, 1) == '#')) {
 				continue;
 			}
-			
+
 			switch($this->_buffer) {
 				case '<navigation>':
 					$this->_section = 1;
@@ -298,20 +298,20 @@ class FileHandler {
 			}
 		}
 		fclose($fh);
-		
+
 		return $this->_arr_json;
 	}
-	
+
 	public function setJSONArray($jsonArray) {
 		$this->_arr_json = $jsonArray;
 	}
-	
+
 	private function _doLog($logText) {
 		if(!is_null($this->_logger)) {
 			$this->_logger->Log($logText);
 		}
 	}
-	
+
 	private function _file_exists_case($strUrl) {
 		$realPath = str_replace('\\', '/', realpath($strUrl));
 		if(file_exists($strUrl) && $realPath == $strUrl) {
@@ -322,7 +322,7 @@ class FileHandler {
 			return 0; // File does not exist
 		}
 	}
-	
+
 	public function checkPath($path) {
 		$path = $_SERVER['DOCUMENT_ROOT'] . $path;
 		$dir = substr($path, 0, strrpos($path, "/"));
@@ -340,11 +340,11 @@ class FileHandler {
 			return TRUE; // file exists, by creating one should then specify an alias
 		}
 	}
-	
+
 	private function _pad_num($num, $n) {
 		return str_pad($num, $n, '0', STR_PAD_LEFT);
 	}
-	
+
 	private function _buildNavDataText($arrPart) {
 		static $indent = 0;
 		for($i = 0; $i < count($arrPart); $i++) {
@@ -357,7 +357,7 @@ class FileHandler {
 			} elseif($arrPart[$i]['title_display'] != '') {
 				$ttl1 = $arrPart[$i]['title_display'];
 			}
-			
+
 			$this->_navDataText .= "\t" . $ttl1;
 			$this->_navDataText .= "\t" . $arrPart[$i]['alias'];
 			$this->_navDataText .= "\t" . $arrPart[$i]['accesskey'];
@@ -369,30 +369,30 @@ class FileHandler {
 				$this->_navDataText .= "\n" . $ftabs . $arrPart[$i]['key'] . "-Infotext\t" . $arrPart[$i]['info_text'];
 			}
 			$this->_navDataText .= "\n";
-			
+
 			$this->_navQuickLinkText .= $arrPart[$i]['quicklink'] == TRUE ? $arrPart[$i]['key'] . "\n" : '';
 			$this->_navDisplayLinkText .= $arrPart[$i]['displaylink'] == TRUE ? $arrPart[$i]['key'] . "\n" : '';
-			
+
 			if(strlen($arrPart[$i]['url']) == 0) {
 				$this->checkPath($arrPart[$i]['path']);
 			}
-			
+
 			if(count($arrPart[$i]['child']) > 0) {
 				$this->_buildNavDataText($arrPart[$i]['child']);
 			}
 			$indent--;
 		}
 	}
-	
+
 	public function saveJSONToFile($filePath, $bak = FALSE) {
 		$this->_navDataText = '';
 		$this->_navQuickLinkText = '';
 		$this->_navDisplayLinkText = '';
-		
+
 		$this->_buildNavDataText($this->_arr_json['A']);
 		$this->_buildNavDataText($this->_arr_json['Z']);
 		$this->_buildNavDataText($this->_arr_json['S']);
-		
+
 		// backup
 		if($bak) {
 			// check for backup_dir
@@ -405,10 +405,10 @@ class FileHandler {
 				throw new Exception('Creating backup error!');
 			}
 		}
-				
+
 		$old_content = file_get_contents($filePath);
 //		$new_content = preg_replace(array('/^<navigation>((\n|\r\n|.)*?)<\/navigation>/m', '/^<quicklinks>((\n|\r\n|.)*?)<\/quicklinks>/m', '/^<displaylinks>((\n|\r\n|.)*?)<\/displaylinks>/m'), array('[[[navigation]]]', '[[[quicklinks]]]', '[[[displaylinks]]]'), $old_content);
-		
+
 		$new_content2 = '';
 		$fh = fopen($filePath, 'r') or die("Cannot open Nav-Tree file! - $php_errormsg");
 		$sec = 0;
@@ -419,7 +419,7 @@ class FileHandler {
 			if(strlen($buffer) == 0) {
 				continue;
 			}
-			
+
 			switch($buffer) {
 				case '<navigation>':
 					$new_content2 .= "[[[navigation]]]\n";
@@ -449,21 +449,21 @@ class FileHandler {
 		}
 		fclose($fh);
 		$new_content1 = str_replace(array('[[[navigation]]]', '[[[quicklinks]]]', '[[[displaylinks]]]'), array("<navigation>\n" . $this->_navDataText . "</navigation>\n", "<quicklinks>\n" . $this->_navQuickLinkText . "</quicklinks>\n", "<displaylinks>\n" . $this->_navDisplayLinkText . "</displaylinks>\n"), $new_content2);
-		
+
 		// clean up (remove continuous newlines)
 		$new_content1 = preg_replace('/^(\n|\r\n){2,}/m', '', $new_content1);
-		
+
 //		$fh = fopen($filePath, 'w+') or die("Cannot open Nav-Tree file! - $php_errormsg");
 //		fwrite($fh, $new_content1);
 //		fclose($fh);
 		file_put_contents($filePath, $new_content1);
 	}
-	
+
 	public function UpdateExistedPageLogos($logo_content_json, $dir, $filesuffix   ) {
 		global $ne2_config_info;
-		
+
 	      if(!isset($filesuffix )) {
-	      	$filesuffix =  $ne2_config_info['defaulthtml_filesuffix'];   	
+	      	$filesuffix =  $ne2_config_info['defaulthtml_filesuffix'];
 	      }
 
 		if(is_dir($dir)) {
@@ -472,7 +472,7 @@ class FileHandler {
 					// escaped dirs
 //					if($file != '.' && $file != '..' && $file != 'css' && $file != 'grafiken' && $file != 'img' && $file != 'Smarty' && $file != 'ssi'  && $file != 'js'
 //					                      && $file != 'vkapp' && $file != 'vkdaten' && $file != 'xampp') {
-					if (!in_array($file, $ne2_config_info['nologoupdate_dir'])) { 
+					if (!in_array($file, $ne2_config_info['nologoupdate_dir'])) {
 						if(is_dir($dir . $file . '/')) {
 							// recursively
 							$this->UpdateExistedPageLogos($logo_content_json, $dir . $file . '/', $filesuffix);
@@ -482,7 +482,7 @@ class FileHandler {
 
 							if((is_array($erw)) && ($erw[count($erw) - 1] == $filesuffix)) { // replace all the .shtml files
 								if ($ne2_config_info['show_logoupdate_allwebpages']==1) {
-									$thisfile = str_replace($_SERVER['DOCUMENT_ROOT'],'',$dir.$file);									
+									$thisfile = str_replace($_SERVER['DOCUMENT_ROOT'],'',$dir.$file);
 							 		echo("Aktualisiere  $thisfile \n");
 							 	}
 								$this->doReplaceLogo($logo_content_json, $dir . $file);
@@ -495,7 +495,7 @@ class FileHandler {
 			}
 		}
 	}
-	
+
 	public function UpdateStartPageLogo() {
 		global $ne2_config_info;
 		// just remove the link
@@ -510,7 +510,7 @@ class FileHandler {
 			file_put_contents($start_page_path, $newContent);
 		}
 	}
-	
+
 	private function doReplaceLogo($logo_content_json, $page_file_path) {
 		$fcontent = file_get_contents($page_file_path);
 		$data = json_decode($logo_content_json);
@@ -530,13 +530,23 @@ class FileHandler {
 		}
 		$newContent = preg_replace($pat, '<div id="logo">' . $rcontent . '</div>', $fcontent);
 		file_put_contents($page_file_path, $newContent);
-		
+
+		$this->set_language($data->content_language, $page_file_path);
 		$this->replaceTitleTagContent($data->site_title_text, $page_file_path);
 	}
-	
+
+	private function set_language($set_lang, $page_file_path) {
+			$fcontent = file_get_contents($page_file_path);
+			if(strlen($set_lang) < 2 ||strlen($set_lang) > 4 || is_numeric($set_lang))
+				$set_lang = "de";
+			$replaced = preg_replace('/<html lang="...?.?">/','<html lang="'.$set_lang.'">', $fcontent);
+			#	$replaced = str_replace('<html lang="de">', '<html lang="'.$set_lang.'">', $fcontent);
+			file_put_contents($page_file_path, $replaced);
+	}
+
 	private function replaceTitleTagContent($new_title_text, $page_file_path) {
 		$fcontent = file_get_contents($page_file_path);
-		
+
 		// <h1>...</h1> / get page-title
 		$pattern2 = '/(<div id="titel">)((\n|.)*?)(<\/div>)/i';
 		preg_match($pattern2, $fcontent, $matches);
@@ -545,10 +555,10 @@ class FileHandler {
 		// <title>...</title>
 		$pattern1 = '/<title>((\n|.)*?)<\/title>/i';
 		$fcontent = preg_replace($pattern1, '<title>' . htmlentities($new_title_text, ENT_COMPAT, 'UTF-8') . ': ' . $page_title . '</title>', $fcontent);
-		
+
 		file_put_contents($page_file_path, $fcontent);
 	}
-	
+
    public function replace_div_with_id($id, $fpath, $rcontent) {
 	   $fcontent = file_get_contents ( $fpath );
 	   $doc = new DOMDocument();
