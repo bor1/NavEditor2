@@ -132,5 +132,5 @@ if (isset($_POST['btnLogin']) && $toWait < 5) {
 	<?php require('common_footer.php'); ?>
 </div>
 </body>
-
+<!-- comment-->
 </html>
